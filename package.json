@@ -1,0 +1,74 @@
+{
+  "name": "@avarock/react-form",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "sideEffects": false,
+  "author": {
+    "name": "Ayush Nagar",
+    "url": "https://github.com/ayushnagarcodes"
+  },
+  "license": "MIT",
+  "description": "A customizable React form library with modular input components for building flexible forms",
+  "homepage": "https://github.com/ayushnagarcodes/react-form",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayushnagarcodes/react-form.git"
+  },
+  "keywords": [
+    "react-inputs",
+    "react-form",
+    "react-components",
+    "input-components",
+    "form-components",
+    "ui-components"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "webpack --mode production",
+    "build:types": "tsc --emitDeclarationOnly",
+    "lint": "eslint --cache --fix --max-warnings=0",
+    "format": "prettier --write",
+    "type-check": "tsc --noEmit",
+    "prepare": "husky",
+    "prepublishOnly": "npm run build && npm run build:types"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.25.9",
+    "@babel/preset-typescript": "^7.26.0",
+    "@eslint/js": "^9.14.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@typescript-eslint/eslint-plugin": "^8.14.0",
+    "@typescript-eslint/parser": "^8.14.0",
+    "babel-loader": "^9.2.1",
+    "eslint": "^9.14.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-react": "^7.37.2",
+    "globals": "^15.12.0",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "^5.6.3",
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4"
+  },
+  "peerDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "npm run lint",
+      "npm run format"
+    ]
+  },
+  "type": "module"
+}

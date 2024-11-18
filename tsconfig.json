@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "incremental": true,
+    "outDir": "dist",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "target": "es5",
+    "module": "esnext",
+    "lib": ["DOM", "ESNext"],
+    "sourceMap": true,
+    "importHelpers": true,
+    "rootDir": "src",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowJs": false,
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "baseUrl": "src",
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true
+  },
+  "include": ["src/**/*", "types/**/*"],
+  "exclude": ["node_modules", "build", "scripts", "dist"]
+}
