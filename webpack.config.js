@@ -40,8 +40,8 @@ const config = {
         sideEffects: true,
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: "asset/resource",
+        test: /\.svg$/,
+        use: ["@svgr/webpack"],
       },
     ],
   },

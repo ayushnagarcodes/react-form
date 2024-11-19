@@ -1,0 +1,45 @@
+@mixin theme($name) {
+  @if $name == "light" {
+    // Form buttons
+    --clr-btn-bg: #2d2d2d;
+    --clr-btn-border: #0066cc;
+    --clr-btn-font: #efefef;
+
+    // Input
+    --clr-input-bg: #f0f0f0;
+    --clr-input-bg-disabled: #e0e0e0;
+    --clr-input-label: #0066cc;
+    --clr-input-font: #414141;
+    --clr-input-error: #d32f2f;
+    --clr-input-outline: #d8d8d8;
+    --clr-input-icon: #525252;
+
+    // Input animated
+    --clr-input-a-label: #c9c9c9;
+    --clr-input-a-label-focus: #0066cc;
+    --clr-input-a-font: #414141;
+    --clr-input-a-border: #e3e3e3;
+  }
+
+  @if $name == "dark" {
+    // Form buttons
+    --clr-btn-bg: #1a1a1a;
+    --clr-btn-border: #3f99e7;
+    --clr-btn-font: #efefef;
+
+    // Input
+    --clr-input-bg: #1a1a1a;
+    --clr-input-bg-disabled: #2c2c2c;
+    --clr-input-label: #3f99e7;
+    --clr-input-font: #efefef;
+    --clr-input-error: #ca2424;
+    --clr-input-outline: #c4c4c4;
+    --clr-input-icon: #f1f1f1;
+
+    // Input animated
+    --clr-input-a-label: rgba(196, 196, 196, 0.816);
+    --clr-input-a-label-focus: #3f99e7;
+    --clr-input-a-font: #efefef;
+    --clr-input-a-border: #f1f1f1;
+  }
+}

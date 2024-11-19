@@ -1,6 +1,7 @@
 import { ComponentProps, useState } from "react";
 import { InputBaseProps } from "../types/baseTypes";
-import iconsSprite from "../assets/iconsSprite.svg";
+import Eye from "../assets/eye.svg";
+import EyeOff from "../assets/eye-off.svg";
 
 type InputTextAnimatedProps = {
   type?: "text" | "password" | "email";
@@ -52,13 +53,7 @@ function InputTextAnimated({
             className="input__icon"
             onClick={() => setIsPassHidden(!isPassHidden)}
           >
-            <svg>
-              <use
-                href={
-                  isPassHidden ? `${iconsSprite}#eye` : `${iconsSprite}#eye-off`
-                }
-              ></use>
-            </svg>
+            {isPassHidden ? <Eye /> : <EyeOff />}
           </button>
         )}
       </div>

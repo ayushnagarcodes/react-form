@@ -8,6 +8,7 @@ type FormProps = {
   onSubmit: (formState: Record<string, any>) => void;
   HTMLValidate?: boolean;
   showSubmitBtn?: boolean;
+  theme?: "light" | "dark";
 };
 
 function Form({
@@ -16,6 +17,7 @@ function Form({
   onSubmit,
   HTMLValidate = false,
   showSubmitBtn = true,
+  theme = "light",
 }: FormProps) {
   const [formState, setFormState] = useState<Record<string, any>>({});
   const [formErrors, setFormErrors] = useState<Record<string, any>>({});
@@ -46,7 +48,7 @@ function Form({
   return (
     <form
       style={style}
-      className="form"
+      className={`form form--${theme}`}
       onSubmit={handleSubmit}
       noValidate={!HTMLValidate}
     >
