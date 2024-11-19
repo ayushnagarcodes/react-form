@@ -1,1 +1,211 @@
+:root {
+  color-scheme: light dark;
+}
 
+@media (prefers-color-scheme: light) {
+  .form {
+    // Form buttons
+    --clr-btn-border: #0066cc;
+
+    // Input
+    --clr-input-bg: #f0f0f0;
+    --clr-input-bg-disabled: #e0e0e0;
+    --clr-input-label: #0066cc;
+    --clr-input-font: #414141;
+    --clr-input-error: #d32f2f;
+    --clr-input-outline: #d8d8d8;
+
+    // Input animated
+    --clr-input-a-label: #c9c9c9;
+    --clr-input-a-label-focus: #0066cc;
+    --clr-input-a-font: #414141;
+    --clr-input-a-border: #e3e3e3;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .form {
+    // Form buttons
+    --clr-btn-bg: #1a1a1a;
+    --clr-btn-border: #3f99e7;
+
+    // Input
+    --clr-input-bg: #1a1a1a;
+    --clr-input-bg-disabled: #2c2c2c;
+    --clr-input-label: #3f99e7;
+    --clr-input-font: #efefef;
+    --clr-input-error: #ca2424;
+    --clr-input-outline: #c4c4c4;
+
+    // Input animated
+    --clr-input-a-label: rgba(196, 196, 196, 0.816);
+    --clr-input-a-label-focus: #3f99e7;
+    --clr-input-a-font: #efefef;
+    --clr-input-a-border: #f1f1f1;
+  }
+}
+
+.form {
+  max-width: 50rem;
+  margin: 0 auto;
+  display: grid;
+  gap: 3.5rem;
+  font-family: sans-serif;
+  padding: 2rem;
+
+  &__submit {
+    justify-self: end;
+    font-size: 1.125rem;
+    border-radius: 0.5rem;
+    border: 1px solid transparent;
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: var(--clr-btn-bg);
+    cursor: pointer;
+    transition: border-color 0.25s;
+
+    &:hover {
+      border-color: var(--clr-btn-border);
+    }
+
+    &:focus,
+    &:focus-visible {
+      outline: 1px auto -webkit-focus-ring-color;
+    }
+  }
+}
+
+.input {
+  font: inherit;
+  color: inherit;
+  display: grid;
+  gap: 4px;
+
+  &__label {
+    width: fit-content;
+    font-size: 1.125rem;
+    color: var(--clr-input-label);
+  }
+
+  &__error {
+    margin-top: 2px;
+    width: fit-content;
+    font-size: 0.875rem;
+    color: var(--clr-input-error);
+  }
+
+  &__field-base {
+    max-width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1.25rem;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--clr-input-bg);
+    color: var(--clr-input-font);
+
+    &:focus {
+      outline: 1px solid var(--clr-input-outline);
+    }
+
+    &:disabled {
+      background-color: var(--clr-input-bg-disabled);
+    }
+  }
+
+  &__field-text {
+  }
+}
+
+.input-animated {
+  font: inherit;
+  color: inherit;
+  display: grid;
+  gap: 6px;
+
+  &__container {
+    position: relative;
+  }
+
+  &__label {
+    position: absolute;
+    left: 0;
+    bottom: 0.25rem;
+    font-size: 1.375rem;
+    color: var(--clr-input-a-label);
+    cursor: text;
+    letter-spacing: 1px;
+    transition: 0.5s;
+    text-transform: uppercase;
+  }
+
+  &__field:focus ~ &__label,
+  &__field:not(:placeholder-shown) ~ &__label {
+    font-size: 0.875rem;
+    color: var(--clr-input-a-label-focus);
+    transform: translateY(-2.25rem);
+    transition: 0.5s;
+  }
+
+  &__field {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    font-size: 1.375rem;
+    color: var(--clr-input-a-font);
+    padding: 0.5rem 0;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__error {
+    width: fit-content;
+    font-size: 0.875rem;
+    color: var(--clr-input-error);
+  }
+
+  &__border {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2.5px;
+    width: 100%;
+    background: var(--clr-input-a-border);
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: -100%;
+      bottom: 0;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(
+        to right,
+        rgb(229, 33, 108),
+        rgb(169, 49, 255),
+        rgb(64, 140, 255),
+        rgb(255, 234, 0),
+        rgb(229, 33, 108)
+      );
+      animation: animate 1s linear infinite;
+      transition: 0.5s;
+    }
+  }
+
+  &__field:focus ~ &__border::before {
+    left: 0;
+    transition: 0.5s;
+  }
+}
+
+@keyframes animate {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: 20rem;
+  }
+}

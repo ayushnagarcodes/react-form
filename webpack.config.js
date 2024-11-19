@@ -11,13 +11,13 @@ const config = {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].js",
     library: {
-      name: "@avarock/react-form",
-      type: "umd",
-      umdNamedDefine: true,
+      type: "module",
     },
     assetModuleFilename: "[name][ext]",
-    globalObject: "this",
     clean: true,
+    environment: {
+      module: true,
+    },
   },
   externals: {
     react: "react",
@@ -50,6 +50,9 @@ const config = {
       filename: "styles.css",
     }),
   ],
+  experiments: {
+    outputModule: true,
+  },
 };
 
 export default config;
