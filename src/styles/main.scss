@@ -5,7 +5,9 @@
 @media (prefers-color-scheme: light) {
   .form {
     // Form buttons
+    --clr-btn-bg: #2d2d2d;
     --clr-btn-border: #0066cc;
+    --clr-btn-font: #efefef;
 
     // Input
     --clr-input-bg: #f0f0f0;
@@ -28,6 +30,7 @@
     // Form buttons
     --clr-btn-bg: #1a1a1a;
     --clr-btn-border: #3f99e7;
+    --clr-btn-font: #efefef;
 
     // Input
     --clr-input-bg: #1a1a1a;
@@ -61,6 +64,7 @@
     padding: 0.75rem 1.5rem;
     font-weight: 500;
     font-family: inherit;
+    color: var(--clr-btn-font);
     background-color: var(--clr-btn-bg);
     cursor: pointer;
     transition: border-color 0.25s;
@@ -131,7 +135,7 @@
     position: absolute;
     left: 0;
     bottom: 0.25rem;
-    font-size: 1.375rem;
+    font-size: 1.25rem;
     color: var(--clr-input-a-label);
     cursor: text;
     letter-spacing: 1px;
@@ -151,7 +155,7 @@
     width: 100%;
     background-color: transparent;
     border: none;
-    font-size: 1.375rem;
+    font-size: 1.25rem;
     color: var(--clr-input-a-font);
     padding: 0.5rem 0;
 

@@ -3,6 +3,7 @@
     "incremental": true,
     "outDir": "dist",
     "declaration": true,
+    "declarationDir": "dist",
     "emitDeclarationOnly": true,
     "target": "es5",
     "module": "esnext",
