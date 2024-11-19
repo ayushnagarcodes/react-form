@@ -4,7 +4,7 @@ import validateForm from "../utils/validateForm";
 
 type FormProps = {
   style?: CSSProperties;
-  children: ReactElement[];
+  children: ReactElement | ReactElement[];
   onSubmit: (formState: Record<string, any>) => void;
   HTMLValidate?: boolean;
   showSubmitBtn?: boolean;

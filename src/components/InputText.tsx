@@ -1,5 +1,5 @@
 import { ComponentProps, useState } from "react";
-import { InputBaseProps } from "../types/baseTypes";
+import type { InputBaseProps } from "../types/baseTypes";
 import Eye from "../assets/eye.svg";
 import EyeOff from "../assets/eye-off.svg";
 

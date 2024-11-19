@@ -3,7 +3,7 @@ import type { ReactElement } from "react";
 
 function validateForm(
   formState: Record<string, any>,
-  children: ReactElement[]
+  children: ReactElement | ReactElement[]
 ): Record<string, any> {
   const errors: Record<string, any> = {};
 

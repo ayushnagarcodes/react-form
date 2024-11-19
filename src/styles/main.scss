@@ -1,5 +1,9 @@
 @use "mixins" as *;
+@use "variables" as *;
 
+/***********
+*** Form ***
+***********/
 .form {
   max-width: 50rem;
   margin: 0 auto;
@@ -44,12 +48,19 @@
   }
 }
 
+/************
+*** Input ***
+************/
 .input {
   position: relative;
   font: inherit;
   color: inherit;
   display: grid;
   gap: 4px;
+
+  &__container {
+    position: relative;
+  }
 
   &__label {
     width: fit-content;
@@ -87,6 +98,7 @@
 
   &__field-base {
     max-width: 100%;
+    min-width: 15rem;
     padding: 0.75rem 1rem;
     font-size: 1.25rem;
     border: none;
@@ -106,8 +118,28 @@
   &__field-password {
     padding-right: 2.875rem;
   }
+
+  &__field-select {
+    position: relative;
+    appearance: none;
+    cursor: pointer;
+
+    & ~ .input__icon {
+      top: calc(1.45 * 1.125rem + 4px + 0.875rem);
+      height: 1.25rem;
+      width: 1.25rem;
+      transition: 0.3s $timing-function;
+    }
+
+    &:focus ~ .input__icon {
+      transform: rotate(180deg);
+    }
+  }
 }
 
+/*********************
+*** Input Animated ***
+*********************/
 .input-animated {
   font: inherit;
   color: inherit;
