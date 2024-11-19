@@ -4,6 +4,5 @@ export type InputBaseProps = {
   value?: string;
   onChange?: (name: string, value: any) => void;
   error?: string;
-  showError?: boolean;
   className?: string;
 };

@@ -1,8 +1,10 @@
-import { ComponentProps } from "react";
+import { ComponentProps, useState } from "react";
 import { InputBaseProps } from "../types/baseTypes";
+import iconsSprite from "../assets/iconsSprite.svg";
 
 type InputTextProps = {
   type?: "text" | "password" | "email";
+  togglePasswordVisibility?: boolean;
 } & InputBaseProps &
   ComponentProps<"input">;
 
@@ -14,24 +16,49 @@ function InputText({
   onChange,
   error,
   className = "",
-  showError,
+  togglePasswordVisibility = true,
   ...props
 }: InputTextProps) {
+  // logic for password field
+  const [isPassHidden, setIsPassHidden] = useState(true);
+
   return (
     <div className={`input ${className}`}>
       <label htmlFor={name} className="input__label">
         {label}
       </label>
+
       <input
-        type={type}
+        type={type !== "password" ? type : isPassHidden ? "password" : "text"}
         name={name}
         value={value}
         onChange={(e) => onChange?.(name, e.target.value)}
-        className="input__field-base input__field-text"
+        className={`input__field-base ${
+          type === "password" && togglePasswordVisibility
+            ? "input__field-password"
+            : ""
+        }`}
         id={name}
         {...props}
       />
-      {showError && error && <span className="input__error">{error}</span>}
+
+      {type === "password" && togglePasswordVisibility && (
+        <button
+          type="button"
+          className="input__icon"
+          onClick={() => setIsPassHidden(!isPassHidden)}
+        >
+          <svg>
+            <use
+              href={
+                isPassHidden ? `${iconsSprite}#eye` : `${iconsSprite}#eye-off`
+              }
+            ></use>
+          </svg>
+        </button>
+      )}
+
+      {error && <span className="input__error">{error}</span>}
     </div>
   );
 }

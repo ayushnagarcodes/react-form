@@ -16,6 +16,7 @@
     --clr-input-font: #414141;
     --clr-input-error: #d32f2f;
     --clr-input-outline: #d8d8d8;
+    --clr-input-icon: #525252;
 
     // Input animated
     --clr-input-a-label: #c9c9c9;
@@ -39,6 +40,7 @@
     --clr-input-font: #efefef;
     --clr-input-error: #ca2424;
     --clr-input-outline: #c4c4c4;
+    --clr-input-icon: #f1f1f1;
 
     // Input animated
     --clr-input-a-label: rgba(196, 196, 196, 0.816);
@@ -56,18 +58,22 @@
   font-family: sans-serif;
   padding: 2rem;
 
+  * {
+    box-sizing: border-box;
+  }
+
   &__submit {
     justify-self: end;
     font-size: 1.125rem;
     border-radius: 0.5rem;
     border: 1px solid transparent;
     padding: 0.75rem 1.5rem;
-    font-weight: 500;
     font-family: inherit;
+    font-weight: 500;
     color: var(--clr-btn-font);
     background-color: var(--clr-btn-bg);
-    cursor: pointer;
     transition: border-color 0.25s;
+    cursor: pointer;
 
     &:hover {
       border-color: var(--clr-btn-border);
@@ -75,12 +81,13 @@
 
     &:focus,
     &:focus-visible {
-      outline: 1px auto -webkit-focus-ring-color;
+      outline: 1px solid var(--clr-btn-border);
     }
   }
 }
 
 .input {
+  position: relative;
   font: inherit;
   color: inherit;
   display: grid;
@@ -97,6 +104,27 @@
     width: fit-content;
     font-size: 0.875rem;
     color: var(--clr-input-error);
+  }
+
+  &__icon {
+    position: absolute;
+    top: calc(1.45 * 1.125rem + 4px + 0.75rem);
+    right: 0.875rem;
+    height: 1.5rem;
+    width: 1.5rem;
+    font-family: inherit;
+    color: var(--clr-input-icon);
+    fill: var(--clr-input-icon);
+    cursor: pointer;
+    background: transparent;
+    outline: none;
+    border: none;
+    padding: 0;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   &__field-base {
@@ -117,7 +145,8 @@
     }
   }
 
-  &__field-text {
+  &__field-password {
+    padding-right: 2.875rem;
   }
 }
 
@@ -151,6 +180,12 @@
     transition: 0.5s;
   }
 
+  .input__icon {
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0.25rem;
+  }
+
   &__field {
     width: 100%;
     background-color: transparent;
@@ -162,6 +197,10 @@
     &:focus {
       outline: none;
     }
+  }
+
+  &__password {
+    padding-right: 2.25rem;
   }
 
   &__error {

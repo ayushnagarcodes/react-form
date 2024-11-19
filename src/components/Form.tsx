@@ -1,14 +1,22 @@
 import { Children, cloneElement, useState } from "react";
 import type { CSSProperties, ReactElement, FormEvent } from "react";
+import validateForm from "../utils/validateForm";
 
 type FormProps = {
   style?: CSSProperties;
   children: ReactElement[];
   onSubmit: (formState: Record<string, any>) => void;
   HTMLValidate?: boolean;
+  showSubmitBtn?: boolean;
 };
 
-function Form({ style, children, onSubmit, HTMLValidate = false }: FormProps) {
+function Form({
+  style,
+  children,
+  onSubmit,
+  HTMLValidate = false,
+  showSubmitBtn = true,
+}: FormProps) {
   const [formState, setFormState] = useState<Record<string, any>>({});
   const [formErrors, setFormErrors] = useState<Record<string, any>>({});
 
@@ -23,14 +31,7 @@ function Form({ style, children, onSubmit, HTMLValidate = false }: FormProps) {
     e.preventDefault();
 
     // Handling form validation
-    const errors: Record<string, any> = {};
-
-    Children.forEach(children, (child) => {
-      if (child.props.required && !formState[child.props.name]) {
-        errors[child.props.name] = `* ${child.props.label} is required`;
-      }
-    });
-    console.log(errors);
+    const errors = HTMLValidate ? {} : validateForm(formState, children);
 
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors);
@@ -38,6 +39,7 @@ function Form({ style, children, onSubmit, HTMLValidate = false }: FormProps) {
     }
 
     // If no errors, submit the form
+    setFormErrors({});
     onSubmit(formState);
   }
 
@@ -53,12 +55,13 @@ function Form({ style, children, onSubmit, HTMLValidate = false }: FormProps) {
           value: formState[child.props.name] || "",
           onChange: handleInputChange,
           error: formErrors[child.props.name],
-          showError: !HTMLValidate,
         });
       })}
-      <button type="submit" className="form__submit">
-        Submit
-      </button>
+      {showSubmitBtn && (
+        <button type="submit" className="form__submit">
+          Submit
+        </button>
+      )}
     </form>
   );
 }
