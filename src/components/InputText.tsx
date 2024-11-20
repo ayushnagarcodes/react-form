@@ -4,7 +4,7 @@ import Eye from "../assets/eye.svg";
 import EyeOff from "../assets/eye-off.svg";
 
 type InputTextProps = {
-  type?: "text" | "password" | "email";
+  type?: "text" | "password" | "email" | "number";
   togglePasswordVisibility?: boolean;
 } & InputBaseProps &
   ComponentProps<"input">;
@@ -34,7 +34,12 @@ function InputText({
           type={type !== "password" ? type : isPassHidden ? "password" : "text"}
           name={name}
           value={value}
-          onChange={(e) => onChange?.(name, e.target.value)}
+          onChange={(e) =>
+            onChange?.(
+              name,
+              type === "number" ? Number(e.target.value) : e.target.value
+            )
+          }
           className={`input__field-base ${
             type === "password" && togglePasswordVisibility
               ? "input__field-password"
