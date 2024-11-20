@@ -91,12 +91,12 @@ function App() {
           name="isCookieEnabled"
         />
         <InputRadio
-          name="age"
-          label="Age"
+          name="gender"
+          label="Gender"
           options={[
-            { label: "18", value: "18" },
-            { label: "20", value: "20" },
-            { label: "24", value: "24" },
+            { label: "Male", value: "male" },
+            { label: "Female", value: "female" },
+            { label: "Other", value: "other" },
           ]}
           required
         />
@@ -129,61 +129,64 @@ export default App;
   - `theme`: Choose between `"light"` and `"dark"` themes.
   - Custom submit button or other elements can be passed as children.
 
-### **Input Components**
-
-#### Required Props
-
-- `name`: Register the field in the form.
-- `label`: Display field labels.
-
 ---
 
-#### **`InputText`**
+### **`InputText`**
 
 - **Props:**
+  - `name` (required): Register the field in the form.
+  - `label` (required): Display field label.
   - `type`: `"text" | "password" | "email" | "number"`. Default: `"text"`.
   - `togglePasswordVisibility`: Show/hide toggle button for password visibility (if `type="password"`).
   - Any valid `HTMLInputElement` attributes.
 
 ---
 
-#### **`InputTextAnimated`**
+### **`InputTextAnimated`**
 
 - Similar to `InputText` with the following differences:
   - No `placeholder` prop (uses animation instead).
-  - Styles for cool transition and animation.
+  - Styles for transition and animation.
 
 ---
 
-#### **`InputSelect`**
+### **`InputSelect`**
 
 - **Props:**
+  - `name` (required): Register the field in the form.
+  - `label` (required): Display field label.
   - `options` (required): Array of objects `{ label: string; value: string }` to generate `<option>` elements.
   - `initialOptionLabel`: Placeholder for the dropdown (Default: `"Select"`). Becomes hidden on user toggle, if `required` is set.
   - Any valid `HTMLSelectElement` attributes.
 
 ---
 
-#### **`InputTextArea`**
+### **`InputTextArea`**
 
 - **Props:**
+  - `name` (required): Register the field in the form.
+  - `label` (required): Display field label.
   - `maxLength`: Sets the limit and also displays an overlay showing the number of characters typed.
   - Custom scrollbars for better UX.
   - Any valid `HTMLTextareaElement` attributes.
 
 ---
 
-#### **`InputCheckBox`**
+### **`InputCheckBox`**
 
 - A custom `<input type="checkbox" />` element.
 - **Props:**
+  - `name` (required): Register the field in the form.
+  - `label` (required): Display field label.
   - Any valid `HTMLInputElement` attributes, except `type`, which is set to `"checkbox"`.
 
 ---
 
-#### **`InputRadio`**
+### **`InputRadio`**
 
 - A group of `<input type="radio" />` elements.
 - **Props:**
+  - `name` (required): Register the field in the form.
+  - `label` (required): Display field label.
   - `options` (required): Array of objects `{ label: string; value: string }` to generate radio buttons.
   - Any valid `HTMLInputElement` attributes, except `type` (set to `"radio"`) and `value` (derived from `options`).
