@@ -8,7 +8,7 @@ function InputCheckBox({
   name,
   label,
   value,
-  onChange,
+  onChangeInput,
   error,
   className = "",
   ...props
@@ -23,7 +23,7 @@ function InputCheckBox({
           type="checkbox"
           name={name}
           value={value}
-          onChange={(e) => onChange?.(name, e.target.checked)}
+          onChange={(e) => onChangeInput?.(name, e.target.checked)}
           className="input__field-checkbox"
           id={name}
           {...props}

@@ -12,7 +12,7 @@ function InputSelect({
   name,
   label,
   value,
-  onChange,
+  onChangeInput,
   error,
   className = "",
   options,
@@ -29,7 +29,7 @@ function InputSelect({
         <select
           name={name}
           value={value}
-          onChange={(e) => onChange?.(name, e.target.value)}
+          onChange={(e) => onChangeInput?.(name, e.target.value)}
           className="input__field-base input__field-select"
           id={name}
           {...props}

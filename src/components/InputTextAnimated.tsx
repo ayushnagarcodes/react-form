@@ -14,7 +14,7 @@ function InputTextAnimated({
   name,
   label,
   value,
-  onChange,
+  onChangeInput,
   error,
   className = "",
   togglePasswordVisibility = true,
@@ -31,7 +31,7 @@ function InputTextAnimated({
           name={name}
           value={value}
           onChange={(e) =>
-            onChange?.(
+            onChangeInput?.(
               name,
               type === "number" ? Number(e.target.value) : e.target.value
             )

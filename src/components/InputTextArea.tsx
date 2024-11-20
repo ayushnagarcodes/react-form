@@ -8,7 +8,7 @@ function InputTextArea({
   name,
   label,
   value,
-  onChange,
+  onChangeInput,
   error,
   className = "",
   ...props
@@ -16,7 +16,7 @@ function InputTextArea({
   const [count, setCount] = useState(0);
 
   function handleChange(e: ChangeEvent<HTMLTextAreaElement>) {
-    onChange?.(name, e.target.value);
+    onChangeInput?.(name, e.target.value);
     setCount(e.target.value.length);
   }
 

@@ -2,7 +2,7 @@ export type InputBaseProps = {
   name: string;
   label: string;
   value?: string;
-  onChange?: (name: string, value: any) => void;
+  onChangeInput?: (name: string, value: any) => void;
   error?: string;
   className?: string;
 };

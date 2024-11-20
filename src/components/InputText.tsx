@@ -14,7 +14,7 @@ function InputText({
   name,
   label,
   value,
-  onChange,
+  onChangeInput,
   error,
   className = "",
   togglePasswordVisibility = true,
@@ -35,7 +35,7 @@ function InputText({
           name={name}
           value={value}
           onChange={(e) =>
-            onChange?.(
+            onChangeInput?.(
               name,
               type === "number" ? Number(e.target.value) : e.target.value
             )

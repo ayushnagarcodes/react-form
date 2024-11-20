@@ -66,7 +66,7 @@ function Form({
       {Children.map(children, (child) => {
         return cloneElement(child, {
           value: formState[child.props.name] || "",
-          onChange: handleInputChange,
+          onChangeInput: handleInputChange,
           error: formErrors[child.props.name],
         });
       })}

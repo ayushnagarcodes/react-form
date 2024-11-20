@@ -9,7 +9,7 @@ type InputRadioProps = {
 function InputRadio({
   name,
   label,
-  onChange,
+  onChangeInput,
   error,
   className = "",
   options,
@@ -26,7 +26,7 @@ function InputRadio({
               type="radio"
               name={name}
               value={value}
-              onChange={(e) => onChange?.(name, e.target.value)}
+              onChange={(e) => onChangeInput?.(name, e.target.value)}
               className="input__field-radio"
               id={`${name}-${value}`}
               {...props}
