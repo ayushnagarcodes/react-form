@@ -13,6 +13,7 @@ export default [
     linterOptions: {
       reportUnusedDisableDirectives: true,
     },
+    ignores: ["dist/**", "node_modules/**", "build/**"],
     languageOptions: {
       globals: {
         ...globals.browser,

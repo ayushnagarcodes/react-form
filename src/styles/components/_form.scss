@@ -1,0 +1,48 @@
+@use "../abstracts/mixins" as *;
+
+.form {
+  max-width: 50rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  place-items: center;
+  gap: 2.5rem 4rem;
+  font-family: sans-serif;
+  padding: 2rem;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  &--light {
+    @include theme("light");
+  }
+
+  &--dark {
+    @include theme("dark");
+  }
+
+  &__submit {
+    grid-column: 1 / -1;
+    place-self: end end;
+    font-size: 1.125rem;
+    border-radius: 0.5rem;
+    border: 1px solid transparent;
+    padding: 0.75rem 1.5rem;
+    font-family: inherit;
+    font-weight: 500;
+    color: var(--clr-btn-font);
+    background-color: var(--clr-btn-bg);
+    transition: border-color 0.25s;
+    cursor: pointer;
+
+    &:hover {
+      border-color: var(--clr-btn-border);
+    }
+
+    &:focus,
+    &:focus-visible {
+      outline: 1px solid var(--clr-btn-border);
+    }
+  }
+}
