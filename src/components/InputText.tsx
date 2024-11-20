@@ -29,29 +29,30 @@ function InputText({
         {label}
       </label>
 
-      <input
-        type={type !== "password" ? type : isPassHidden ? "password" : "text"}
-        name={name}
-        value={value}
-        onChange={(e) => onChange?.(name, e.target.value)}
-        className={`input__field-base ${
-          type === "password" && togglePasswordVisibility
-            ? "input__field-password"
-            : ""
-        }`}
-        id={name}
-        {...props}
-      />
-
-      {type === "password" && togglePasswordVisibility && (
-        <button
-          type="button"
-          className="input__icon"
-          onClick={() => setIsPassHidden(!isPassHidden)}
-        >
-          {isPassHidden ? <Eye /> : <EyeOff />}
-        </button>
-      )}
+      <div className="input__container">
+        <input
+          type={type !== "password" ? type : isPassHidden ? "password" : "text"}
+          name={name}
+          value={value}
+          onChange={(e) => onChange?.(name, e.target.value)}
+          className={`input__field-base ${
+            type === "password" && togglePasswordVisibility
+              ? "input__field-password"
+              : ""
+          } ${error ? "input__field-base--error" : ""}`}
+          id={name}
+          {...props}
+        />
+        {type === "password" && togglePasswordVisibility && (
+          <button
+            type="button"
+            className="input__icon"
+            onClick={() => setIsPassHidden(!isPassHidden)}
+          >
+            {isPassHidden ? <Eye /> : <EyeOff />}
+          </button>
+        )}
+      </div>
 
       {error && <span className="input__error">{error}</span>}
     </div>

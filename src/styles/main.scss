@@ -60,6 +60,8 @@
 
   &__container {
     position: relative;
+    width: 100%;
+    min-width: 15rem;
   }
 
   &__label {
@@ -77,7 +79,8 @@
 
   &__icon {
     position: absolute;
-    top: calc(1.45 * 1.125rem + 4px + 0.75rem);
+    top: 50%;
+    translate: 0 -50%;
     right: 0.875rem;
     height: 1.5rem;
     width: 1.5rem;
@@ -97,8 +100,7 @@
   }
 
   &__field-base {
-    max-width: 100%;
-    min-width: 15rem;
+    width: 100%;
     padding: 0.75rem 1rem;
     font-size: 1.25rem;
     border: none;
@@ -113,6 +115,11 @@
     &:disabled {
       background-color: var(--clr-input-bg-disabled);
     }
+
+    &--error,
+    &:user-invalid {
+      border: 1px solid var(--clr-input-error);
+    }
   }
 
   &__field-password {
@@ -120,19 +127,17 @@
   }
 
   &__field-select {
-    position: relative;
     appearance: none;
     cursor: pointer;
 
     & ~ .input__icon {
-      top: calc(1.45 * 1.125rem + 4px + 0.875rem);
       height: 1.25rem;
       width: 1.25rem;
       transition: 0.3s $timing-function;
     }
 
     &:focus ~ .input__icon {
-      transform: rotate(180deg);
+      rotate: 180deg;
     }
   }
 }
@@ -172,7 +177,6 @@
 
   .input__icon {
     top: 50%;
-    transform: translateY(-50%);
     right: 0.25rem;
   }
 

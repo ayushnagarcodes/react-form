@@ -1,4 +1,4 @@
-import { Children, cloneElement, useState } from "react";
+import { Children, cloneElement, useEffect, useState } from "react";
 import type { CSSProperties, ReactElement, FormEvent } from "react";
 import validateForm from "../utils/validateForm";
 
@@ -44,6 +44,17 @@ function Form({
     setFormErrors({});
     onSubmit(formState);
   }
+
+  // Initialize formState
+  useEffect(() => {
+    const initialFormState: Record<string, any> = {};
+
+    Children.forEach(children, (child) => {
+      initialFormState[child.props.name] = "";
+    });
+
+    setFormState(initialFormState);
+  }, []);
 
   return (
     <form
