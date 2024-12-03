@@ -2,7 +2,6 @@
 
 .input {
   position: relative;
-  max-width: 18rem;
   width: 100%;
   font: inherit;
   color: inherit;
@@ -137,7 +136,7 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 2.5rem;
+    gap: 1.75rem;
   }
 
   &__field-radio {
@@ -195,7 +194,7 @@
 
   &__field-checkbox {
     position: relative;
-    bottom: 3.5px;
+    bottom: 5.5px;
     cursor: pointer;
     appearance: none;
     height: 1.25rem;

@@ -41,7 +41,7 @@ function App() {
   return (
     <div>
       <Form
-        style={{ gridTemplateColumns: "1fr 1fr" }}
+        style={{ gridTemplateColumns: "1fr 1fr", maxWidth: "40rem" }}
         onSubmit={handleSubmit}
         theme="light"
         HTMLValidate={false}
