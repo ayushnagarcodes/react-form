@@ -1,7 +1,8 @@
 import { Children, cloneElement, useEffect, useState } from "react";
 import type { CSSProperties, ReactElement, FormEvent } from "react";
-import validateForm from "../utils/validateForm";
+import validateForm, { validateSingleField } from "../utils/validateForm";
 import useThrottle from "../hooks/useThrottle";
+import useDebounce from "../hooks/useDebounce";
 
 type FormProps = {
   style?: CSSProperties;
@@ -22,13 +23,32 @@ function Form({
 }: FormProps) {
   const [formState, setFormState] = useState<Record<string, any>>({});
   const [formErrors, setFormErrors] = useState<Record<string, any>>({});
+  const debouncedSetFormErrors = useDebounce(setFormErrors, 300);
   const throttledHandleSubmit = useThrottle(handleSubmit, 1000);
 
-  function handleInputChange(name: string, value: any) {
+  function handleInput(name: string, value: any) {
     setFormState((prevState) => ({
       ...prevState,
       [name]: value,
     }));
+
+    // Handling input field validation
+    const newErrors = HTMLValidate
+      ? {}
+      : validateSingleField(
+          { ...formState, [name]: value },
+          formErrors,
+          children,
+          name
+        );
+
+    // Setting new error state for this input field keeping the rest unchanged
+    if (Object.keys(newErrors).length > 0)
+      debouncedSetFormErrors({ ...formErrors, ...newErrors });
+    else {
+      const { [name]: _, ...rest } = formErrors;
+      debouncedSetFormErrors(rest);
+    }
   }
 
   function handleSubmit() {
@@ -69,7 +89,7 @@ function Form({
       {Children.map(children, (child) => {
         return cloneElement(child, {
           value: formState[child.props.name] || "",
-          onChangeInput: handleInputChange,
+          onChangeInput: handleInput,
           error: formErrors[child.props.name],
         });
       })}
